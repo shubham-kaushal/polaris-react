@@ -373,6 +373,16 @@ Use when there is only one primary action but other related actions can be taken
 </div>
 ```
 
+### Button with Icon
+
+By default icons are placed before the button content, use the `iconPlacement` property to display the icon after the content instead.
+
+```jsx
+<Button iconPlacement="after" icon={ExternalMinor}>
+  Hello
+</Button>
+```
+
 ### Disabled state
 
 Use for actions that aren’t currently available. The surrounding interface should make it clear why the button is disabled and what needs to be done to enable it.

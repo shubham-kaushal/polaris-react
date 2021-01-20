@@ -133,6 +133,13 @@ describe('<Button />', () => {
     });
   });
 
+  describe('iconPlacement', () => {
+    it('renders the icon before by default', () => {
+      const button = mountWithAppProvider(<Button icon={PlusMinor}>Content</Button>);
+      console.log(button);
+    });
+  });
+
   describe('accessibilityLabel', () => {
     it('passes prop', () => {
       const mockAccessibilityLabel = 'mock accessibility label';
@@ -291,6 +298,21 @@ describe('<Button />', () => {
       expect(actionList.prop('items')).toStrictEqual(
         expect.arrayContaining(actions),
       );
+    });
+
+    it('takes precedence over the disclosure arrow', () => {
+      const actions = [
+        {
+          content: 'Save and mark as ordered',
+        },
+      ];
+
+      const disclosure = {actions};
+
+      const button = mountWithAppProvider(<Button disclosure="up" connectedDisclosure={disclosure} />);
+
+      expect(button.find('.DisclosureIcon').exists()).toBe(false);
+      expect(button.find('button')).toHaveLength(2);
     });
   });
 
